@@ -20,4 +20,13 @@ def filter_fastq(input_fastq, output_fastq, gc_bounds = (0,100), length_bounds =
                     and check_length(seq, length_bounds)
                     and check_quality(qual, quality_threshold)):
                 write_fastq(record, out_file)
+
+from helpers.bio_files import ( read_multiline_fasta, write_oneline_fasta,name_out_file)
+
+def convert_multiline_fasta_to_oneline(input_fasta, output_fasta = None):
+    path = name_out_file(input_fasta, output_fasta)
+    records = read_multiline_fasta(input_fasta)
+    write_oneline_fasta(records, path)
         
+    
+            
